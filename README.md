@@ -4,6 +4,19 @@
 
 这个项目基于原作者 [xiaoheiCat/docker-wechat-sogou-pinyin](https://github.com/xiaoheiCat/docker-wechat-sogou-pinyin) 继续整理和增强。上游项目解决了「Docker 里运行微信 + 搜狗拼音」这个核心问题，这个仓库则更偏向“适合自己长期使用和公开维护”的版本：保留原作者思路和链接，同时补齐本地构建、输入法恢复、Web/VNC 使用建议以及更适合发布到 GitHub 的仓库结构。
 
+## 为什么要在 Docker 里跑微信，并通过浏览器访问
+
+微信官方并没有提供适合这类自动化场景的公开 API。对于很多“读取聊天内容、截取界面、辅助回复消息”的需求来说，直接操作桌面版微信界面反而是最通用、最现实的方案。
+
+把 Linux 版微信放进 Docker 里，再通过浏览器访问，有几个实际价值：
+
+- 部署方式统一，不依赖宿主机桌面环境细节，迁移到别的机器也更容易。
+- 浏览器访问是最通用的控制入口，不要求每台机器都额外安装 VNC 客户端。
+- 这样 AI agent 可以直接用 Playwright 控制浏览器界面，例如截图、读取聊天窗口内容、保存证据。
+- 同一套方式也能反向操作页面，例如点击会话、聚焦输入框、输入内容并发送消息。
+
+如果你的目标不是“把微信做成一个官方 API 客户端”，而是“让 AI 能稳定看到界面并操作界面”，那么浏览器访问容器里的微信，通常就是目前最实用的落地方式。
+
 ## 我这版重点增强
 
 - 搜狗拼音默认激活，不再强依赖手动切换热键。
@@ -203,4 +216,3 @@ services:
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/image?repos=whynottogo/docker-wechat&type=date&legend=top-left)](https://www.star-history.com/?repos=whynottogo%2Fdocker-wechat&type=date&legend=top-left)
-
