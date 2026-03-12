@@ -177,15 +177,8 @@ docker run -d \
 
 ## Stars
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=whynottogo/docker-wechat&type=Date&theme=dark
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=whynottogo/docker-wechat&type=Date"
-  />
-</picture>
+## Star History
+
+[![Star History Chart](https://api.star-history.com/image?repos=whynottogo/docker-wechat&type=date&legend=top-left)](https://www.star-history.com/?repos=whynottogo%2Fdocker-wechat&type=date&legend=top-left)
+
+
