@@ -1,0 +1,5 @@
+/datas/
+/temp-packages/*.deb
+/*.deb
+*.log
+.DS_Store
