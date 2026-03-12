@@ -154,8 +154,33 @@ docker run -d \
 | `DISPLAY_HEIGHT` | 桌面高度。 | `1080` |
 | `DARK_MODE` | 启用深色模式。 | `0` |
 | `WEB_AUDIO` | 浏览器访问时启用音频。 | `0` |
+| `WEB_AUTHENTICATION` | 设为 `1` 时，浏览器访问 `5800` 会先进入登录页。需要同时启用 `SECURE_CONNECTION=1`。 | `0` |
+| `WEB_AUTHENTICATION_USERNAME` | Web 登录保护的用户名。适合单用户快速配置。 | 无 |
+| `WEB_AUTHENTICATION_PASSWORD` | Web 登录保护的密码。适合单用户快速配置。 | 无 |
 | `VNC_PASSWORD` | 原生 VNC 连接密码。 | 无 |
 | `SECURE_CONNECTION` | 启用 Web/VNC 加密连接。 | `0` |
+
+## Web 登录保护
+
+`WEB_AUTHENTICATION`、`WEB_AUTHENTICATION_USERNAME` 和 `WEB_AUTHENTICATION_PASSWORD` 仍然有效，但它们不是由本仓库脚本自己处理，而是由基础镜像 `jlesage/baseimage-gui` 提供。
+
+需要注意：
+
+- 只有浏览器访问的 Web 界面会受这组变量保护。
+- 要生效，必须同时设置 `SECURE_CONNECTION=1`，即通过 HTTPS 访问。
+- 如果只开 `WEB_AUTHENTICATION=1` 而不开 `SECURE_CONNECTION=1`，Web 认证不会按预期工作。
+
+示例：
+
+```yaml
+services:
+  wechat:
+    environment:
+      - SECURE_CONNECTION=1
+      - WEB_AUTHENTICATION=1
+      - WEB_AUTHENTICATION_USERNAME=admin
+      - WEB_AUTHENTICATION_PASSWORD=change-this-password
+```
 
 ## 目录与数据
 
@@ -175,10 +200,7 @@ docker run -d \
 - 原始思路与基础实现来自 [xiaoheiCat/docker-wechat-sogou-pinyin](https://github.com/xiaoheiCat/docker-wechat-sogou-pinyin)
 - 基础 GUI 镜像来自 `jlesage/baseimage-gui`
 
-## Stars
-
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/image?repos=whynottogo/docker-wechat&type=date&legend=top-left)](https://www.star-history.com/?repos=whynottogo%2Fdocker-wechat&type=date&legend=top-left)
-
 
