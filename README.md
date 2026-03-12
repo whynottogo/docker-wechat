@@ -17,6 +17,10 @@
 
 如果你的目标不是“把微信做成一个官方 API 客户端”，而是“让 AI 能稳定看到界面并操作界面”，那么浏览器访问容器里的微信，通常就是目前最实用的落地方式。
 
+## 截图
+<img src="https://raw.githubusercontent.com/whynottogo/picgoRe/dev/f4a40628-e383-4138-b94c-e96195f97dde.png" width="600" height="500" />
+<img src="https://raw.githubusercontent.com/whynottogo/picgoRe/dev/20260312231105918.png" width="600" height="500" />
+
 ## 我这版重点增强
 
 - 搜狗拼音默认激活，不再强依赖手动切换热键。
